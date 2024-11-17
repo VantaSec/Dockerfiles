@@ -1,0 +1,20 @@
+version: "3.8"
+services:
+  starkiller:
+    image: starkiller:latest
+    ports:
+      - "3000:3000"
+  gophish:
+    image: gophish/gophish:latest
+    ports:
+      - "8080:8080"
+  deathstar:
+    image: deathstar:latest
+    ports:
+      - "4000:4000"
+    depends_on:
+      - starkiller
+      - gophish
+networks:
+  default:
+    driver: bridge
